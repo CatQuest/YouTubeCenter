@@ -104,9 +104,8 @@ body.static-yt-logo #yt-masthead .doodle-removed #logo {
   border-width: 1px !important;
 }
 
-.watch8 #watch7-views-info {
-  bottom: initial !important;
-  top: -6px !important;
+#watch7-views-info {
+  bottom: 100%;
 }
 
 #watch-description .ypc-offer-thumbnail {
@@ -991,4 +990,9 @@ body > #page {
 
 .site-center-aligned.ytcenter-hide-recommended-channels .browse-list-item-container:hover .compact-shelf .yt-uix-button-shelf-slider-pager {
   width: 25px !important;
+}
+
+.ytcenter-hide-resume-playback-bar .resume-playback-background,
+.ytcenter-hide-resume-playback-bar .resume-playback-progress-bar {
+  display: none;
 }

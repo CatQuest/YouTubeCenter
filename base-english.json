@@ -600,7 +600,7 @@
   "COUNTRY_ISO3166-1_CODES_ID": "Indonesia",
   "COUNTRY_ISO3166-1_CODES_IE": "Ireland",
   "SETTINGS_SUBCAT_VIDEO_THUMBNAIL": "Video Thumbnail",
-  "SETTINGS_ABOUT_COPYRIGHTS": "Copyright © 2011 - 2014 Jeppe Rune Mortensen (YePpHa). All Rights Reserved.",
+  "SETTINGS_ABOUT_COPYRIGHTS": "Copyright © 2011 - 2017 Jeppe Rune Mortensen (YePpHa). All Rights Reserved.",
   "SETTINGS_PREVENTAUTOPLAY_LABEL": "Prevent auto-play",
   "COLORPICKER_COLOR": "Color",
   "SETTINGS_PLAYERGLOW_LIGHTS_OFF_BOTH": "Both",
@@ -823,5 +823,6 @@
   "SETTINGS_DISLIKEDBUTTON_HOVER_OPACITY": "Disliked button hover opacity",
   "SETTINGS_WMODE_TRANSPARENT": "Transparent",
   "SETTINGS_MP3SERVICES_HDDOWNLOADER_128": "HDDownloader.com (128 kb/s)",
-  "MODULES_YTEXPERIMENTS_SETCODE": "Set Code"
+  "MODULES_YTEXPERIMENTS_SETCODE": "Set Code",
+  "SETTINGS_HIDE_RESUME_PLAYBACK_BAR": "Hide resume playback bar"
 }

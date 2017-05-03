@@ -1639,6 +1639,10 @@
       for (var v = 3, el = document.createElement('b'), all = el.all || []; el.innerHTML = '<!--[if gt IE ' + (++v) + ']><i><![endif]-->', all[0];);
       return v > 4 ? v : !!document.documentMode;
     }());
+	
+	function getAPIKey() {
+		return ytcenter.settings.google_apikey || "AIzaSyCO5gfGpEiqmc8XTknN9RyC3TCJz1-XyAI";
+	}
     
     /**
      * UAParser.js v0.7.3
@@ -3091,7 +3095,6 @@
     ytcenter.icon.dislikebuttonicon = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAA57GlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS41LWMwMjEgNzkuMTU1NzcyLCAyMDE0LzAxLzEzLTE5OjQ0OjAwICAgICAgICAiPgogICA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPgogICAgICA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIgogICAgICAgICAgICB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iCiAgICAgICAgICAgIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIKICAgICAgICAgICAgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIgogICAgICAgICAgICB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIKICAgICAgICAgICAgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIKICAgICAgICAgICAgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iCiAgICAgICAgICAgIHhtbG5zOmV4aWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vZXhpZi8xLjAvIj4KICAgICAgICAgPHhtcDpDcmVhdG9yVG9vbD5BZG9iZSBQaG90b3Nob3AgQ0MgMjAxNCAoV2luZG93cyk8L3htcDpDcmVhdG9yVG9vbD4KICAgICAgICAgPHhtcDpDcmVhdGVEYXRlPjIwMTQtMTEtMjVUMjA6NDU6MDgrMDE6MDA8L3htcDpDcmVhdGVEYXRlPgogICAgICAgICA8eG1wOk1vZGlmeURhdGU+MjAxNC0xMS0yNVQyMDo0OTozNCswMTowMDwveG1wOk1vZGlmeURhdGU+CiAgICAgICAgIDx4bXA6TWV0YWRhdGFEYXRlPjIwMTQtMTEtMjVUMjA6NDk6MzQrMDE6MDA8L3htcDpNZXRhZGF0YURhdGU+CiAgICAgICAgIDxkYzpmb3JtYXQ+aW1hZ2UvcG5nPC9kYzpmb3JtYXQ+CiAgICAgICAgIDxwaG90b3Nob3A6Q29sb3JNb2RlPjM8L3Bob3Rvc2hvcDpDb2xvck1vZGU+CiAgICAgICAgIDx4bXBNTTpJbnN0YW5jZUlEPnhtcC5paWQ6YjQxOWUzOWEtZGMwMS02MjQ2LWEyOTktMWVjNGU3M2JiMTkwPC94bXBNTTpJbnN0YW5jZUlEPgogICAgICAgICA8eG1wTU06RG9jdW1lbnRJRD5hZG9iZTpkb2NpZDpwaG90b3Nob3A6MjZlYzQ3NjUtNzRkYy0xMWU0LWJmMDAtZGJiYjU0YjBiN2RkPC94bXBNTTpEb2N1bWVudElEPgogICAgICAgICA8eG1wTU06T3JpZ2luYWxEb2N1bWVudElEPnhtcC5kaWQ6YjI0MmM0NjUtMmRmNS1kNTQ1LTgxMTQtMGFjYmIwODM5ZTkxPC94bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ+CiAgICAgICAgIDx4bXBNTTpIaXN0b3J5PgogICAgICAgICAgICA8cmRmOlNlcT4KICAgICAgICAgICAgICAgPHJkZjpsaSByZGY6cGFyc2VUeXBlPSJSZXNvdXJjZSI+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDphY3Rpb24+Y3JlYXRlZDwvc3RFdnQ6YWN0aW9uPgogICAgICAgICAgICAgICAgICA8c3RFdnQ6aW5zdGFuY2VJRD54bXAuaWlkOmIyNDJjNDY1LTJkZjUtZDU0NS04MTE0LTBhY2JiMDgzOWU5MTwvc3RFdnQ6aW5zdGFuY2VJRD4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OndoZW4+MjAxNC0xMS0yNVQyMDo0NTowOCswMTowMDwvc3RFdnQ6d2hlbj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OnNvZnR3YXJlQWdlbnQ+QWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKFdpbmRvd3MpPC9zdEV2dDpzb2Z0d2FyZUFnZW50PgogICAgICAgICAgICAgICA8L3JkZjpsaT4KICAgICAgICAgICAgICAgPHJkZjpsaSByZGY6cGFyc2VUeXBlPSJSZXNvdXJjZSI+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDphY3Rpb24+c2F2ZWQ8L3N0RXZ0OmFjdGlvbj4KICAgICAgICAgICAgICAgICAgPHN0RXZ0Omluc3RhbmNlSUQ+eG1wLmlpZDpiNDE5ZTM5YS1kYzAxLTYyNDYtYTI5OS0xZWM0ZTczYmIxOTA8L3N0RXZ0Omluc3RhbmNlSUQ+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDp3aGVuPjIwMTQtMTEtMjVUMjA6NDk6MzQrMDE6MDA8L3N0RXZ0OndoZW4+CiAgICAgICAgICAgICAgICAgIDxzdEV2dDpzb2Z0d2FyZUFnZW50PkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE0IChXaW5kb3dzKTwvc3RFdnQ6c29mdHdhcmVBZ2VudD4KICAgICAgICAgICAgICAgICAgPHN0RXZ0OmNoYW5nZWQ+Lzwvc3RFdnQ6Y2hhbmdlZD4KICAgICAgICAgICAgICAgPC9yZGY6bGk+CiAgICAgICAgICAgIDwvcmRmOlNlcT4KICAgICAgICAgPC94bXBNTTpIaXN0b3J5PgogICAgICAgICA8dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICAgICA8dGlmZjpYUmVzb2x1dGlvbj43MjAwMDAvMTAwMDA8L3RpZmY6WFJlc29sdXRpb24+CiAgICAgICAgIDx0aWZmOllSZXNvbHV0aW9uPjcyMDAwMC8xMDAwMDwvdGlmZjpZUmVzb2x1dGlvbj4KICAgICAgICAgPHRpZmY6UmVzb2x1dGlvblVuaXQ+MjwvdGlmZjpSZXNvbHV0aW9uVW5pdD4KICAgICAgICAgPGV4aWY6Q29sb3JTcGFjZT42NTUzNTwvZXhpZjpDb2xvclNwYWNlPgogICAgICAgICA8ZXhpZjpQaXhlbFhEaW1lbnNpb24+MjA8L2V4aWY6UGl4ZWxYRGltZW5zaW9uPgogICAgICAgICA8ZXhpZjpQaXhlbFlEaW1lbnNpb24+MjA8L2V4aWY6UGl4ZWxZRGltZW5zaW9uPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAKPD94cGFja2V0IGVuZD0idyI/PlQx56UAAAAgY0hSTQAAeiUAAICDAAD5/wAAgOkAAHUwAADqYAAAOpgAABdvkl/FRgAAAPVJREFUeNqs1a9OBDEQx/HPEgISQ5AQHAIMF/4oCE/AIQgJhoe4xziDuAfAkaCwWBQKJDgEBo+DkMF0L5u9Lbeik0zSTqbfdDq/SauIUNIWFLbFelFVVTP+hA284SX5c9r/NhNnKoyIdvAEkfEvPGKMw5R/gCGGEdEJvPsH2PTr+k61R8TMG67itGRTrrBUEnhZUjZb2C0JPC8t7LPSwLWik4J17OEI+xhgM3PuBw9pvZPklp2U2i7w3SHo98aUTM9PORngdgZ2g5Wu0Z0HvG2BXnHcVUZf4GcDNsZyrgl9gR8JNprX1b7ACe77yKQNrEp/AX8DAKa6wJeP5AXiAAAAAElFTkSuQmCC";
     ytcenter.css = {
       general: "@styles-general@",
-      resize: "@styles-resize@",
       topbar: "@styles-topbar@",
       flags: "@styles-flags@",
       html5player: "@styles-html5player@",
@@ -3975,17 +3978,18 @@
         var detail = {};
         detail.element = element;
         detail.entryElement = element.parentNode;
-        detail.contentElement = element.getElementsByClassName("content")[0];
+        detail.contentElement = element.getElementsByClassName("comment-renderer-content")[0];
         
-        detail.headerElement = detail.contentElement.getElementsByClassName("comment-header")[0];
-        detail.textElement = detail.contentElement.getElementsByClassName("comment-text")[0];
+        detail.headerElement = detail.contentElement.getElementsByClassName("comment-renderer-header")[0];
+        detail.textElement = detail.contentElement.getElementsByClassName("comment-renderer-text")[0];
         
-        detail.isReply = ytcenter.utils.hasClass(element, "reply");
+        var repliesRenderer = element.parentNode.parentNode.parentNode;
+        detail.isReply = ytcenter.utils.hasClass(repliesRenderer, "comment-replies-renderer");
         detail.hasSource = element.getElementsByClassName("comment-source").length > 0;
         
         detail.parentComment = null;
         if (detail.isReply) {
-          detail.parentComment = exports.getCommentByElement(element.parentNode.previousElementSibling);
+          detail.parentComment = exports.getCommentByElement(repliesRenderer.previousElementSibling);
         }
         
         detail.url = element.getElementsByTagName("a")[0].getAttribute("href");
@@ -4053,7 +4057,7 @@
         exports.comments.push(commentObject);
       };
       exports.loadComments = function(){
-        var comments = document.getElementsByClassName("comment-item");
+        var comments = document.getElementsByClassName("comment-renderer");
         for (var i = 0; i < comments.length; i++) {
           try {
             exports.addCommentObject(exports.getCommentObject(comments[i]));
@@ -4594,8 +4598,8 @@
       return exports;
     })();
     ytcenter.getUserData = function(userId, callback) {
-		var apikey = ytcenter.settings.google_apikey || "AIzaSyCO5gfGpEiqmc8XTknN9RyC3TCJz1-XyAI";
-      ytcenter.utils.xhr({
+      var apikey = getAPIKey();
+      ytcenter.utils.browser_xhr({
         url: "https://www.googleapis.com/youtube/v3/channels?part=snippet&id=" + encodeURIComponent(userId) + "&key=" + encodeURIComponent(apikey),
         method: "GET",
         onload: function(r) {
@@ -4603,15 +4607,29 @@
           try {
             data = JSON.parse(r.responseText);
           } catch (e) {
-            con.error(e);
+            con.error("[getUserData] Error:", e);
           }
-		  var country = null;
-		  if (data && data.items && data.items.length > 0 && data.items[0] && data.items[0].snippet) {
-			  country = data.items[0].snippet.country;
-		  }
+          
+          var country = null;
+          if (data) {
+            if (data.items && data.items.length > 0 && data.items[0] && data.items[0].snippet) {
+              country = data.items[0].snippet.country;
+              con.log("[getUserData] Success. userID: " + userId + " Country: " + country, data);
+            } else if (data.error) {
+              con.error("[getUserData] Error:", data.error)
+            }
+          }
+          
           callback(country);
         },
-        onerror: function(){
+        onerror: function(response){
+          try {
+            var data = JSON.parse(r.responseText);
+            con.error("[getUserData] Error:", data.error)
+          } catch (e) {
+            con.error("[getUserData] Error: " + response.responseText);
+          }
+		 
           callback(null);
         }
       });
@@ -4930,12 +4948,24 @@
         }
         return videos;
       }
-      function loadVideoConfig(item, callback) {
+      function loadVideoConfig(item, options, callback) {
+        if (typeof options === "function") {
+          callback = options;
+          options = {};
+        }
+        options.spflink = typeof options.spflink === "boolean" ? options.spflink : true;
+        
         if (item.stream && item.storyboard) {
           callback(item.stream, item.storyboard);
         } else {
-          var spflink = true,
-            url = "//www.youtube.com/watch?v=" + item.id + (spflink ? "&spf=navigate" : "");
+          var spflink = options.spflink,
+              url = "//www.youtube.com/watch?v=" + item.id + (spflink ? "&spf=navigate" : "");
+          var headers = {};
+          if (window.ytspf && window.ytspf.config && window.ytspf.config["experimental-request-headers"]) {
+            headers = window.ytspf.config["experimental-request-headers"];
+          }
+          headers["X-SPF-previous"] = window.location.href;
+          headers["X-SPF-referer"] = window.location.href;
           if (loc.href.indexOf("https://") === 0) {
             url = "https:" + url;
           } else {
@@ -4944,25 +4974,31 @@
           ytcenter.utils.xhr({
             url: url,
             method: "GET",
-            onload: function(r){
+            headers: headers,
+            onload: function(r) {
               var cfg = null;
               var errorType = "unknown";
               try {
                 try {
                   if (spflink) {
                     var parts = JSON.parse(r.responseText);
-                    
-                    for (var i = 0, len = parts.length; i < len; i++) {
-                      var part = parts[i];
-                      if (part && part.data && part.data.swfcfg) {
-                        cfg = part.data.swfcfg;
-                        break;
+                    if (ytcenter.utils.isArray(parts)) {
+                      for (var i = 0, len = parts.length; i < len; i++) {
+                        var part = parts[i];
+                        if (part && part.data && part.data.swfcfg) {
+                          cfg = part.data.swfcfg;
+                          break;
+                        }
                       }
+                      
+                      if (!cfg) throw "Player configurations not found in spf.";
+                    } else if (parts["reload"] === "now") {
+                      loadVideoConfig(item, { spflink: false }, callback);
+                      return;
                     }
-                    
-                    if (!cfg) throw "Player configurations not found in spf.";
                   } else {
-                    cfg = r.responseText.split("<script>var ytplayer = ytplayer || {};ytplayer.config = ")[1].split(";</script>")[0];
+                    cfg = r.responseText.split("<script>var ytplayer = ytplayer || {};ytplayer.config = ")[1].split(";</script>")[0].split(";ytplayer.load")[0];
+                    
                     cfg = JSON.parse(cfg);
                   }
                 } catch (e) {
@@ -5045,7 +5081,7 @@
         }
       }
       function loadRatings(items, callback) {
-        var apikey = ytcenter.settings.google_apikey || "AIzaSyCO5gfGpEiqmc8XTknN9RyC3TCJz1-XyAI";
+        var apikey = getAPIKey();
         var ids = [];
         var ids_item = [];
         
@@ -5131,7 +5167,7 @@
         if (item.likes && item.dislikes) {
           callback(item.likes, item.dislikes);
         } else if (item.id) {
-			var apikey = ytcenter.settings.google_apikey || "AIzaSyCO5gfGpEiqmc8XTknN9RyC3TCJz1-XyAI";
+			var apikey = getAPIKey();
 			var url = "https://www.googleapis.com/youtube/v3/videos?part=statistics&id=" + encodeURIComponent(item.id) + "&key=" + encodeURIComponent(apikey);
           
           ytcenter.utils.browser_xhr({
@@ -5955,7 +5991,16 @@
           if (loc.pathname === "/" || loc.pathname === "/results" || loc.pathname.indexOf("/feed/") === 0) {
             updateWatchedClass(vt[i]);
           }
-          if (((loc.pathname.indexOf("/user/") === 0 && loc.pathname.indexOf("/videos") !== -1) || loc.pathname === "/" || loc.pathname === "/results" || loc.pathname.indexOf("/feed/") === 0) && ytcenter.settings.watchedVideosIndicator) {
+          if (
+            ytcenter.settings.watchedVideosIndicator &&
+            (
+              loc.pathname === "/" ||
+              loc.pathname === "/results" ||
+              loc.pathname.indexOf("/feed/") === 0 ||
+              (loc.pathname.indexOf("/user/") === 0 && loc.pathname.indexOf("/videos") !== -1) ||
+              (loc.pathname.indexOf("/channel/") === 0 && loc.pathname.indexOf("/videos") !== -1)
+            )
+          ) {
             updateWatchedMessage(vt[i]);
           }
         }
@@ -6000,7 +6045,16 @@
             if (loc.pathname === "/" || loc.pathname === "/results" || loc.pathname.indexOf("/feed/") === 0) {
               updateWatchedClass(videoThumbs[i]);
             }
-            if (((loc.pathname.indexOf("/user/") === 0 && loc.pathname.indexOf("/videos") !== -1) || loc.pathname === "/" || loc.pathname === "/results" || loc.pathname.indexOf("/feed/") === 0) && ytcenter.settings.watchedVideosIndicator) {
+            if (
+              ytcenter.settings.watchedVideosIndicator &&
+              (
+                loc.pathname === "/" ||
+                loc.pathname === "/results" ||
+                loc.pathname.indexOf("/feed/") === 0 ||
+                (loc.pathname.indexOf("/user/") === 0 && loc.pathname.indexOf("/videos") !== -1) ||
+                (loc.pathname.indexOf("/channel/") === 0 && loc.pathname.indexOf("/videos") !== -1)
+              )
+            ) {
               updateWatchedMessage(videoThumbs[i]);
             }
           }
@@ -12278,11 +12332,15 @@
       return a.join(",");
     };
     ytcenter.utils.updateSignatureDecipher = function(){
-      //ytcenter.utils.updateSignatureDecipher = function(){}; // I'm just cheating a little bit ...
       if (ytcenter && ytcenter.player && ytcenter.player.config && ytcenter.player.config.assets && ytcenter.player.config.assets.js) {
-        var js = (loc.href.indexOf("https") === 0 ? "https:" : "http:") + ytcenter.player.config.assets.js,
-            regex = /function [a-zA-Z$0-9]+\(a\){a=a\.split\(""\);(.*?)return a\.join\(""\)}/g,
-            regex2 = /function [a-zA-Z$0-9]+\(a\){a=a\.split\(""\);(((a=([a-zA-Z$0-9]+)\(a,([0-9]+)\);)|(a=a\.slice\([0-9]+\);)|(a=a\.reverse\(\);)|(var b=a\[0\];a\[0\]=a\[[0-9]+%a\.length\];a\[[0-9]+\]=b;)))*return a\.join\(""\)}/g;
+        var js = ytcenter.player.config.assets.js;
+        var jsEl = document.createElement("a");
+        jsEl.href = js;
+        
+        js = jsEl.href;
+        
+        var regex = /function( [a-zA-Z$0-9]+|)\(a\){a=a\.split\((""|'')\);(.*?)return a\.join\((""|'')\)}/g,
+            regex2 = /function( [a-zA-Z$0-9]+|)\(a\){a=a\.split\(""\);(((a=([a-zA-Z$0-9]+)\(a,([0-9]+)\);)|(a=a\.slice\([0-9]+\);)|(a=a\.reverse\(\);)|(var b=a\[0\];a\[0\]=a\[[0-9]+%a\.length\];a\[[0-9]+\]=b;)))*return a\.join\(""\)}/g;
         con.log("[updateSignatureDecipher] Contacting " + js);
         ytcenter.utils.xhr({
           method: "GET",
@@ -12312,7 +12370,7 @@
               }
             } else if (response.responseText.match(regex)) {
               con.log("[updateSignatureDecipher] Using regex 2");
-              a = regex.exec(response.responseText)[1];
+              a = regex.exec(response.responseText)[3];
               if (a.match(/a=([a-zA-Z0-9]+)\.([a-zA-Z0-9]+)\(a,([0-9]+)\)/g)) {
                 var commonObject = null;
                 var arr = a.split(";");
@@ -12389,8 +12447,7 @@
                 }
                 
                 for (var i = 0, len = uniqueMethods.length; i < len; i++) {
-                  if (i > 0) prefix += "|";
-                  prefix += "(([a-zA-Z0-9]+):function\\(([a-zA-Z0-9,]+)\\)\\{(.*?)\\}[,]?)";
+                  prefix += "(([a-zA-Z0-9]+):function\\(([a-zA-Z0-9,]+)\\)\\{(.*?)\\}[\r\n]*[,]?[\r\n]*)";
                 }
                 
                 prefix += ")\\}";
@@ -13978,6 +14035,7 @@
     ytcenter.languages = @ant-database-language@;
     
     ytcenter._settings = {
+      hideResumePlaybackBar: false,
       player_gap: false,
       google_apikey: '',
       placementTransformation: [],
@@ -14129,7 +14187,7 @@
       notwatchedVideos: [],
       watchedVideosLimit: 10000, // Hope this isn't too big.
       notwatchedVideosLimit: 10000, // Hope this isn't too big.
-      gridSubscriptionsPage: true,
+      gridSubscriptionsPage: false,
       compatibilityCheckerForChromeDisable: false,
       removeRelatedVideosEndscreen: false,
       enableResize: true,
@@ -17996,6 +18054,24 @@
           subcat.addOption(option);
           
           option = ytcenter.settingsPanel.createOption(
+            "hideResumePlaybackBar",
+            "bool",
+            "SETTINGS_HIDE_RESUME_PLAYBACK_BAR",
+            {
+              "listeners": [
+                {
+                  "event": "click",
+                  "callback": function(){
+                    ytcenter.classManagement.updateClassesByGroup(["page"]);
+                  }
+                }
+              ]
+            },
+            "https://github.com/YePpHa/YouTubeCenter/wiki/Features#hide-resume-playback-bar"
+          );
+          subcat.addOption(option);
+          
+          option = ytcenter.settingsPanel.createOption(
             null,
             "line",
             null
@@ -19652,6 +19728,7 @@
               "links": [
                 {text: "Wiki", url: "https://github.com/YePpHa/YouTubeCenter/wiki"},
                 {text: "Facebook", url: "https://www.facebook.com/YouTubeCenter"},
+                {text: "Reddit", url: "https://www.reddit.com/r/YouTubeCenter/"},
                 {text: "Google+", url: "https://plus.google.com/111275247987213661483/posts"},
                 {text: "Firefox", url: "https://addons.mozilla.org/en-us/firefox/addon/youtube-center/"},
                 {text: "Opera", url: "https://addons.opera.com/en/extensions/details/youtube-center/"},
@@ -20072,17 +20149,37 @@
     };
     ytcenter.user = {};
     ytcenter.user.callChannelFeed = function(username, callback){
-      ytcenter.utils.xhr({
+      var apikey = getAPIKey();
+      ytcenter.utils.browser_xhr({
         method: "GET",
-        url: 'https://gdata.youtube.com/feeds/api/channels?q=' + encodeURIComponent("\"" + username + "\"") + '&start-index=1&max-results=1&v=2&alt=json',
+        url: 'https://www.googleapis.com/youtube/v3/search?q=' + encodeURIComponent("\"" + username + "\"") + '&maxResults=1&part=snippet&type=channel&key=' + encodeURIComponent(apikey),
         headers: {
           "Content-Type": "text/plain"
         },
         onload: function(response){
           if (response.responseText) {
-            var j = JSON.parse(response.responseText);
-            if (j.feed && j.feed.entry && j.feed.entry.length > 0) {
-              callback.apply(j.feed.entry[0]);
+            try {  
+              var j = JSON.parse(response.responseText);
+              if (j.items && j.items.length > 0) {
+                callback.apply(j.items[0]);
+                con.log("[callChannelFeed] Success. Username: " + username, j.items[0]);
+              } else if (j.error) {
+                con.error("[callChannelFeed] Error. Username: " + username, j.error);
+              }
+            } catch (e) {
+              con.error("[callChannelFeed] Error. Username: " + username, e);
+            }
+          }
+        },
+        onerror: function(response){
+          if (response.responseText) {
+            try {
+              var j = JSON.parse(response.responseText);
+              if (j.error) {
+                con.error("[callChannelFeed] Error. Username: " + username, j.error);
+              }
+            } catch (e) {
+              con.error("[callChannelFeed] Error: " + + response.responseText + " Username: " + username);
             }
           }
         }
@@ -20886,7 +20983,9 @@
       }
 
       function onChange() {
-        toggled = !toggled;
+        if (autoplayCheckbox && autoplayCheckbox.checked !== toggled) {
+          toggled = !toggled;
+        }
       }
 
       function isChecked() {
@@ -20895,7 +20994,10 @@
 
       function setChecked(checked) {
         if (autoplayCheckbox) {
-          autoplayCheckbox.checked = toggled = !!checked;
+          if (autoplayCheckbox.checked !== checked) {
+            autoplayCheckbox.click();
+          }
+          toggled = !!checked;
         }
       }
 
@@ -21932,13 +22034,13 @@
           try {
             var txt = response.responseText;
             if (txt) {
-              txt = txt.split("<published>");
-              if (txt && txt.length > 1) {
-                txt = txt[1].split("</published>");
-                if (txt && txt.length > 0) {
-                  txt = txt[0];
-                  ytcenter.video.published = new Date(txt);
-                }
+              var data = JSON.parse(response.responseText);
+              if (data.items && data.items.length > 0) {
+                var dateText = data.items[0].snippet.publishedAt;
+                ytcenter.video.published = new Date(dateText);
+                con.log("[Video Publish Date] Success: " + dateText);
+              } else if (data.error) {
+                con.error("[Video Publish Date] Error:", data.error)
               }
             }
           } catch (e) {
@@ -21947,9 +22049,10 @@
           //ytcenter.events.performEvent("ui-refresh");
         };
         if (config.args.video_id) {
-          ytcenter.utils.xhr({
+  	      var apikey = getAPIKey();
+          ytcenter.utils.browser_xhr({
             method: "GET",
-            url: "https://gdata.youtube.com/feeds/api/videos/" + config.args.video_id + "?v=2",
+            url: "https://www.googleapis.com/youtube/v3/videos?id=" + config.args.video_id + "&part=snippet&key=" + encodeURIComponent(apikey),
             headers: {
               "Content-Type": "text/plain"
             },
@@ -22200,9 +22303,15 @@
       }
     };
     
-    ytcenter.player.setPlayerWide = function(center){
-      ytcenter.settings.player_wide = (center ? true : false);
-      ytcenter.utils.setCookie("wide", (center ? "1" : "0"), null, "/", 3600*60*24*30);
+    ytcenter.player.setPlayerWide = function(large) {
+      ytcenter.settings.player_wide = (large ? true : false);
+      var page = document.getElementById("page");
+      if (large) {
+        ytcenter.utils.addClass(page, "watch-wide");
+      } else {
+        ytcenter.utils.removeClass(page, "watch-wide");
+      }
+      ytcenter.utils.setCookie("wide", (large ? "1" : "0"), null, "/", 3600*60*24*30);
       ytcenter.saveSettings();
     };
     ytcenter.player.toggleLights = function(){
@@ -23123,14 +23232,12 @@
           ytcenter.utils.removeClass(player, "watch-small");
 
           ytcenter.utils.addClass(container, "watch-wide");
-          ytcenter.utils.addClass(page, "watch-wide");
           playlist && ytcenter.utils.removeClass(playlist, "player-height");
         } else {
           ytcenter.utils.addClass(player, "watch-small");
           ytcenter.utils.removeClass(player, "watch-large");
 
           ytcenter.utils.removeClass(container, "watch-wide");
-          ytcenter.utils.removeClass(page, "watch-wide");
           playlist && ytcenter.utils.addClass(playlist, "player-height");
         }
 
@@ -23218,11 +23325,13 @@
           }
         }
         ytcenter.playerDocking.updateSize(playerWidth, playerHeight);
-        /*if (large) {
+        if (large) {
           sidebar.style.top = "";
+          sidebar.style.marginTop = "";
         } else {
-          sidebar.style.top = -(playerHeight - 390) + "px";
-        }*/
+          sidebar.style.top = -(playerHeight + 10) + "px";
+          sidebar.style.marginTop = "0px";
+        }
         ytcenter.utils.setCustomCSS("player-width", ".player-width { width: " + playerWidth + "px!important; }");
         ytcenter.utils.setCustomCSS("player-height", ".player-height { height: " + playerHeight + "px!important; }");
 
@@ -24670,7 +24779,8 @@
       {groups: ["page"], element: function(){return document.getElementById("watch-appbar-playlist");}, className: "player-height", condition: function(){return !ytcenter.settings.enableResize;}},
       {groups: ["page", "html5player"], element: function(){return document.body;}, className: "ytcenter-hide-watch-later-on-player", condition: function(){return ytcenter.settings.hideWatchLaterOnPlayer;}},
       {groups: ["page"], element: function(){return document.body;}, className: "ytcenter-hide-footer", condition: function(){return ytcenter.settings.hideFooter;}},
-      {groups: ["page"], element: function(){return document.body;}, className: "ytcenter-player-gap", condition: function(){return ytcenter.settings.player_gap;}}
+      {groups: ["page"], element: function(){return document.body;}, className: "ytcenter-player-gap", condition: function(){return ytcenter.settings.player_gap;}},
+      {groups: ["page"], element: function(){return document.body;}, className: "ytcenter-hide-resume-playback-bar", condition: function(){return ytcenter.settings.hideResumePlaybackBar;}}
     ];
     ytcenter.intelligentFeed = (function(){
       var exports = {}, observer, config = { attributes: true }, feed;
@@ -25132,7 +25242,6 @@
           ytcenter.cssElements.list = ytcenter.utils.addCSS("list", ytcenter.css.list);
           ytcenter.cssElements.confirmbox = ytcenter.utils.addCSS("confirmbox", ytcenter.css.confirmbox);
           ytcenter.cssElements.panel = ytcenter.utils.addCSS("panel", ytcenter.css.panel);
-          ytcenter.cssElements.resize = ytcenter.utils.addCSS("resize", ytcenter.css.resize, ytcenter.settings.enableResize);
           ytcenter.cssElements.resizePanel = ytcenter.utils.addCSS("resizePanel", ytcenter.css.resizePanel);
           ytcenter.cssElements.modules = ytcenter.utils.addCSS("modules", ytcenter.css.modules);
           ytcenter.cssElements.settings = ytcenter.utils.addCSS("settings", ytcenter.css.settings);
@@ -25406,7 +25515,7 @@
           if (ytcenter.video.author) {
             ytcenter.user.callChannelFeed(ytcenter.video.author, function(){
               ytcenter.video._channel = this;
-              ytcenter.video.channelname = this.title['$t'];
+              ytcenter.video.channelname = this.snippet.title;
             });
           }
         } else if (page === "channel") {
@@ -25896,28 +26005,10 @@
           }
         });
         ytcenter.player.listeners.setOverride("SIZE_CLICKED", true);
-        ytcenter.player.listeners.addEventListener("SIZE_CLICKED", function(large){
-          function getSizeById(id) {
-            var sizes = ytcenter.settings["resize-playersizes"];
-            for (var i = 0; i < sizes.length; i++) {
-              if (id === sizes[i].id) {
-                return sizes[i];
-              }
-            }
-            return {
-              id: "default",
-              config: {
-                align: true,
-                height: "",
-                large: false,
-                scrollToPlayer: false,
-                scrollToPlayerButton: false,
-                width: ""
-              }
-            };
-          }
+        ytcenter.player.listeners.addEventListener("SIZE_CLICKED", function(large) {
           if (ytcenter.settings.enableResize) {
             con.log("[Player Resize] Setting to " + (large ? "large" : "small") + "!");
+            ytcenter.player.getAPI().setSizeStyle(true, large);
             if (large) {
               ytcenter.player.setPlayerWide(true);
               

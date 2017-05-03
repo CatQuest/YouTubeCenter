@@ -24,7 +24,7 @@
 // @id              YouTubeCenter
 // @name            YouTube Center Developer Build
 // @namespace       http://www.facebook.com/YouTubeCenter
-// @version         540
+// @version         541
 // @author          Jeppe Rune Mortensen <jepperm@gmail.com>
 // @description     YouTube Center Developer Build contains all kind of different useful functions which makes your visit on YouTube much more entertaining.
 // @icon            https://raw.github.com/YePpHa/YouTubeCenter/master/assets/icon48.png
@@ -108,7 +108,7 @@
 	if (noArgs) {
 		fn += "()";
 	} else {
-		fn += "(true, 4, true, 540)";
+		fn += "(true, 1, true, 541)";
 	}
     script.appendChild(document.createTextNode(fn + ";\n//# sourceURL=" + filename));
     parent.appendChild(script);
@@ -12307,8 +12307,8 @@
       //ytcenter.utils.updateSignatureDecipher = function(){}; // I'm just cheating a little bit ...
       if (ytcenter && ytcenter.player && ytcenter.player.config && ytcenter.player.config.assets && ytcenter.player.config.assets.js) {
         var js = (loc.href.indexOf("https") === 0 ? "https:" : "http:") + ytcenter.player.config.assets.js,
-            regex = /function [a-zA-Z$0-9]+\(a\){a=a\.split\(""\);(.*?)return a\.join\(""\)}/g,
-            regex2 = /function [a-zA-Z$0-9]+\(a\){a=a\.split\(""\);(((a=([a-zA-Z$0-9]+)\(a,([0-9]+)\);)|(a=a\.slice\([0-9]+\);)|(a=a\.reverse\(\);)|(var b=a\[0\];a\[0\]=a\[[0-9]+%a\.length\];a\[[0-9]+\]=b;)))*return a\.join\(""\)}/g;
+            regex = /function( [a-zA-Z$0-9]+|)\(a\){a=a\.split\((""|'')\);(.*?)return a\.join\((""|'')\)}/g,
+            regex2 = /function( [a-zA-Z$0-9]+|)\(a\){a=a\.split\(""\);(((a=([a-zA-Z$0-9]+)\(a,([0-9]+)\);)|(a=a\.slice\([0-9]+\);)|(a=a\.reverse\(\);)|(var b=a\[0\];a\[0\]=a\[[0-9]+%a\.length\];a\[[0-9]+\]=b;)))*return a\.join\(""\)}/g;
         con.log("[updateSignatureDecipher] Contacting " + js);
         ytcenter.utils.xhr({
           method: "GET",
@@ -26420,9 +26420,9 @@
   function eventListener(e) {
     var detail = JSON.parse(e.detail);
     
-    if (4 === 4) { // Safari
+    if (1 === 4) { // Safari
       safari.self.tab.dispatchMessage("call", e.detail); // Redirect event to the extension
-    } else if (4 === 5) { // Opera
+    } else if (1 === 5) { // Opera
       opera.extension.postMessage(e.detail); // Redirect event to the extension
     } else {
       setTimeout(function(){ handleMethods(detail); }, 0);
@@ -26441,9 +26441,9 @@
       return;
     }
     
-    if (4 === 4) { // Safari
+    if (1 === 4) { // Safari
       safari.self.tab.dispatchMessage("call", e.data); // Redirect message to the extension
-    } else if (4 === 5) { // Opera
+    } else if (1 === 5) { // Opera
       opera.extension.postMessage(e.data); // Redirect message to the extension
     } else {
       handleMethods(d);
@@ -26557,7 +26557,7 @@
 
   function xhr(details) {
     createCallableDetails(details);
-    if (4 === 6) { // Firefox
+    if (1 === 6) { // Firefox
       request(details);
     } else if (support.Greasemonkey) {
       setTimeout(function(){
@@ -26620,11 +26620,11 @@
 
   function save(id, key, data) {
     if (typeof data !== "string") data = JSON.stringify(data);
-    if (4 === 1 || 4 === 8) {
+    if (1 === 1 || 1 === 8) {
       chrome_save(id, key, data);
-    } else if (4 === 2) {
+    } else if (1 === 2) {
       callUnsafeWindow(id, window.external.mxGetRuntime().storage.setConfig(key, data));
-    } else if (4 === 6) {
+    } else if (1 === 6) {
       callUnsafeWindow(id, storage_setValue(key, data));
     } else {
       setTimeout(function(){
@@ -26644,11 +26644,11 @@
   }
 
   function load(id, key) {
-    if (4 === 1 || 4 === 8) {
+    if (1 === 1 || 1 === 8) {
       chrome_load(id, key);
-    } else if (4 === 2) {
+    } else if (1 === 2) {
       callUnsafeWindow(id, window.external.mxGetRuntime().storage.getConfig(key) || "{}");
-    } else if (4 === 6) {
+    } else if (1 === 6) {
       callUnsafeWindow(id, storage_getValue(key) || "{}");
     } else {
       setTimeout(function() {
@@ -26668,25 +26668,25 @@
   }
   
   function _load(key, callback) {
-    if (4 === 4) { // Safari
+    if (1 === 4) { // Safari
       safari.self.tab.dispatchMessage("call", JSON.stringify({
         level: "unsafe",
         method: "load",
         id: parseInt("-" + _callback.push(callback), 10),
         arguments: [ key ]
       }));
-    } else if (4 === 5) { // Opera
+    } else if (1 === 5) { // Opera
       opera.extension.postMessage(JSON.stringify({
         level: "unsafe",
         method: "load",
         id: parseInt("-" + _callback.push(callback), 10),
         arguments: [ key ]
       }));
-    } else if (4 === 1 || 4 === 8) {
+    } else if (1 === 1 || 1 === 8) {
       _chrome_load(key, callback);
-    } else if (4 === 2) {
+    } else if (1 === 2) {
       callback(window.external.mxGetRuntime().storage.getConfig(key) || "{}");
-    } else if (4 === 6) {
+    } else if (1 === 6) {
       callback(storage_getValue(key) || "{}");
     } else {
       setTimeout(function() {
@@ -26728,9 +26728,9 @@
   function windowUnload() {
     window.removeEventListener("message", messageListener, false);
     window.removeEventListener("unload", windowUnload, false);
-    if (4 === 4) { // Safari
+    if (1 === 4) { // Safari
       safari.self.removeEventListener("message", safariMessageListener, false);
-    } else if (4 === 5) { // Opera
+    } else if (1 === 5) { // Opera
       opera.extension.onmessage = null;
     }
   }
@@ -26763,9 +26763,9 @@
     if (initializedExtensionListeners) return;
     initializedExtensionListeners = true;
     
-    if (4 === 4) { // Safari
+    if (1 === 4) { // Safari
       safari.self.addEventListener("message", safariMessageListener, false);
-    } else if (4 === 5) { // Opera
+    } else if (1 === 5) { // Opera
       opera.extension.onmessage = operaMessageListener;
     }
   }
